@@ -41,16 +41,16 @@ function tool_directsso_get_usable_urls() {
     if ($config->allowedauths != '') {
         $allowedauths = explode(',', $config->allowedauths);
     } else {
-        $allowedauths = array();
+        $allowedauths = [];
     }
     if ($config->allowedwantspages != '') {
         $allowedwantspages = explode(',', $config->allowedwantspages);
     } else {
-        $allowedwantspages = array();
+        $allowedwantspages = [];
     }
 
     // Initialize an array to hold the URL parameters.
-    $urlparams = array();
+    $urlparams = [];
 
     // Iterate over the auth methods.
     foreach ($allowedauths as $auth) {
@@ -64,13 +64,13 @@ function tool_directsso_get_usable_urls() {
                 // Iterate over the issuers.
                 foreach ($oauthissuer as $oi) {
                     // Remember the URl.
-                    $urlparams[] = array('auth' => $auth, 'id' => $oi->id, 'wantspage' => $wp);
+                    $urlparams[] = ['auth' => $auth, 'id' => $oi->id, 'wantspage' => $wp];
                 }
 
                 // Otherwise.
             } else {
                 // We remember the URl directly.
-                $urlparams[] = array('auth' => $auth, 'wantspage' => $wp);
+                $urlparams[] = ['auth' => $auth, 'wantspage' => $wp];
             }
         }
     }

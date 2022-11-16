@@ -47,69 +47,36 @@ $loginpageurl = new moodle_url('/login/index.php');
 
 // Prepare wantsURL based on the submitted wantspage parameter.
 $allowedwantspages = explode(',', $config->allowedwantspages);
-switch ($wantspage) {
-    // If the caller requested a redirect to the frontpage.
-    case TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE:
-        // If the admin allowed this wantspage target.
-        if (in_array(TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE, $allowedwantspages)) {
-            // Remember wantsurl.
-            $wantsurl = new moodle_url('/?redirect=0');
-            break;
+$wantsurl = null;
+if ($wantspage === TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE && in_array(TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE, $allowedwantspages)) {
+    $wantsurl = new moodle_url('/?redirect=0');
+}
 
-            // Otherwise.
-        } else {
-            // Redirect to the login page as we can't fulfil the request.
-            redirect($loginpageurl);
-        }
-
-        // If the caller requested a redirect to the dashboard.
-    case TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD:
-        // If the admin allowed this wantspage target.
-        if (in_array(TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD, $allowedwantspages)) {
-            // Remember wantsurl.
-            $wantsurl = new moodle_url('/my');
-            break;
-
-            // Otherwise.
-        } else {
-            // Redirect to the login page as we can't fulfil the request.
-            redirect($loginpageurl);
-        }
-
-        // Something unexpected was requested.
-    default:
-        // Redirect to the login page as we can't fulfil the request.
-        redirect($loginpageurl);
+if ($wantspage === TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD && in_array(TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD, $allowedwantspages)) {
+    $wantsurl = new moodle_url('/my');
 }
 
 // Pick redirect URL based on the submitted auth parameter.
 $allowedauths = explode(',', $config->allowedauths);
-switch ($auth) {
-    // If the caller requested oauth2.
-    case 'oauth2':
-        // In this case, we require one more parameter.
-        $issuerid = required_param('id', PARAM_INT);
 
-        // And the page has one more parameter.
-        $PAGE->set_url(new moodle_url('/admin/tool/directsso/login.php',
-                ['auth' => $auth, 'id' => $issuerid, 'wantspage' => $wantspage]));
+// If the caller requested oauth2.
+if($auth === 'oauth2')
+{
+    // In this case, we require one more parameter.
+    $issuerid = required_param('id', PARAM_INT);
 
-        // If the admin allowed this auth method.
-        if (in_array('oauth2', $allowedauths)) {
-            // Compose the URl, add the sesskey (as OAuth2 expects it together with the wantsurl)
-            // and redirect to the OAuth login page.
-            $redirectparams = ['wantsurl' => $wantsurl, 'sesskey' => sesskey(), 'id' => $issuerid];
-            $redirecturl = new moodle_url('/auth/oauth2/login.php', $redirectparams);
-            redirect($redirecturl);
+    // And the page has one more parameter.
+    $PAGE->set_url(new moodle_url('/admin/tool/directsso/login.php',
+            ['auth' => $auth, 'id' => $issuerid, 'wantspage' => $wantspage]));
 
-            // Otherwise.
-        } else {
-            // Redirect to the login page as we can't fulfil the request.
-            redirect($loginpageurl);
-        }
-
-        // Something unexpected was requested.
-    default:
-        // Redirect to the login page as we can't fulfil the request.
-        redirect($loginpageurl);
+    // If the admin allowed this auth method.
+    if (in_array('oauth2', $allowedauths)) {
+        // Compose the URl, add the sesskey (as OAuth2 expects it together with the wantsurl)
+        // and redirect to the OAuth login page.
+        $redirectparams = ['wantsurl' => $wantsurl, 'sesskey' => sesskey(), 'id' => $issuerid];
+        $redirecturl = new moodle_url('/auth/oauth2/login.php', $redirectparams);
+        redirect($redirecturl);
+    }
 }
+
+redirect($loginpageurl);
