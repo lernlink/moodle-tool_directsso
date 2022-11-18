@@ -60,8 +60,7 @@ if ($wantspage === TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD && in_array(TOOL_DIRECTSSO
 $allowedauths = explode(',', $config->allowedauths);
 
 // If the caller requested oauth2.
-if($auth === 'oauth2')
-{
+if ($auth === 'oauth2') {
     // In this case, we require one more parameter.
     $issuerid = required_param('id', PARAM_INT);
 
@@ -77,6 +76,8 @@ if($auth === 'oauth2')
         $redirecturl = new moodle_url('/auth/oauth2/login.php', $redirectparams);
         redirect($redirecturl);
     }
+    // Something unexpected was requested.
 }
 
+// Redirect to the login page as we can't fulfil the request.
 redirect($loginpageurl);
