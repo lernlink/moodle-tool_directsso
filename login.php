@@ -34,7 +34,9 @@ require_once($CFG->dirroot.'/admin/tool/directsso/locallib.php');
 // Required parameters.
 $auth = required_param('auth', PARAM_AUTH);
 $wantspage = required_param('wantspage', PARAM_ALPHA);
-
+//adding paramaters for course target
+$cid= $_GET["courseid"];
+$courseid = optional_param('courseid',$cid,PARAM_ALPHANUM);
 // Set up page.
 $PAGE->set_context(context_system::instance());
 $PAGE->set_url(new moodle_url('/admin/tool/directsso/login.php', ['auth' => $auth, 'wantspage' => $wantspage]));
@@ -54,6 +56,19 @@ switch ($wantspage) {
         if (in_array(TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE, $allowedwantspages)) {
             // Remember wantsurl.
             $wantsurl = new moodle_url('/?redirect=0');
+            break;
+
+            // Otherwise.
+        } else {
+            // Redirect to the login page as we can't fulfil the request.
+            redirect($loginpageurl);
+        }
+//Added by Chris Murad to Support Direct to Course Login
+    case TOOL_DIRECTSSO_WANTSPAGE_COURSE:
+        // If the admin allowed this wantspage target.
+        if (in_array(TOOL_DIRECTSSO_WANTSPAGE_COURSE, $allowedwantspages)) {
+        // Remember wantsurl.
+            $wantsurl = new moodle_url('/course/view.php?id='.$courseid);
             break;
 
             // Otherwise.

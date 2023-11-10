@@ -25,7 +25,8 @@ Admin tool "Direct SSO Entrypoint" - Local library
 // Contants which are used in the plugin settings.
 define('TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD', 'dashboard');
 define('TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE', 'frontpage');
-
+//Added by Chris Murad to allow course target:
+define('TOOL_DIRECTSSO_WANTSPAGE_COURSE', 'course');
 /**
  * Helper function which returns a HTML list of usable URls based on the stored plugin configuration.
  *

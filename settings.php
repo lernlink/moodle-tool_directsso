@@ -62,7 +62,9 @@ if ($hassiteconfig) {
 
         // Create allowed wantspage targets widget.
         $wantspageoptions = array(TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD => get_string('myhome', 'moodle'),
-                TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE => get_string('sitehome', 'core'));
+		TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE => get_string('sitehome', 'core'),
+	        //Added By Chris Murad for Direct Course Access
+                TOOL_DIRECTSSO_WANTSPAGE_COURSE => "Course");
         $setting = new admin_setting_configmulticheckbox('tool_directsso/allowedwantspages',
                 get_string('setting_allowedwantspages', 'tool_directsso', null, true),
                 get_string('setting_allowedwantspages_desc', 'tool_directsso', null, true),
