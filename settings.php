@@ -52,21 +52,23 @@ if ($hassiteconfig) {
         $settings->add($setting);
 
         // Create allowed authentication methods widget.
-        $authoptions = array('oauth2' => get_string('pluginname', 'auth_oauth2'));
+        $authoptions = ['oauth2' => get_string('pluginname', 'auth_oauth2')];
         $setting = new admin_setting_configmulticheckbox('tool_directsso/allowedauths',
                 get_string('setting_allowedauths', 'tool_directsso', null, true),
                 get_string('setting_allowedauths_desc', 'tool_directsso', null, true),
-                array(),
+                [],
                 $authoptions);
         $settings->add($setting);
 
         // Create allowed wantspage targets widget.
-        $wantspageoptions = array(TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD => get_string('myhome', 'moodle'),
-                TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE => get_string('sitehome', 'core'));
+        $wantspageoptions = [
+                TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD => get_string('myhome', 'moodle'),
+                TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE => get_string('sitehome', 'core'),
+        ];
         $setting = new admin_setting_configmulticheckbox('tool_directsso/allowedwantspages',
                 get_string('setting_allowedwantspages', 'tool_directsso', null, true),
                 get_string('setting_allowedwantspages_desc', 'tool_directsso', null, true),
-                array(),
+                [],
                 $wantspageoptions);
         $settings->add($setting);
 
