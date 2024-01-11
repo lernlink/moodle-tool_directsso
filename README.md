@@ -1,5 +1,5 @@
 moodle-tool_directsso
-===========================
+=====================
 
 [![Moodle Plugin CI](https://github.com/lernlink/moodle-tool_directsso/workflows/Moodle%20Plugin%20CI/badge.svg?branch=master)](https://github.com/lernlink/moodle-tool_directsso/actions?query=workflow%3A%22Moodle+Plugin+CI%22+branch%3Amaster)
 
@@ -52,7 +52,7 @@ With this setting, you control to where the user can be redirected by the direct
 
 ### Usable URLs
 
-On the same page, you find a list of usable URLs which you can use to link to Moodle. 
+On the same page, you find a list of usable URLs which you can use to link to Moodle.
 
 
 Security implications
