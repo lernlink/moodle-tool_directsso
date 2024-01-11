@@ -38,12 +38,12 @@ function tool_directsso_get_usable_urls() {
     $config = get_config('tool_directsso');
 
     // Explode the plugin configurations.
-    if ($config->allowedauths != '') {
+    if (isset($config->allowedauths) && $config->allowedauths != '') {
         $allowedauths = explode(',', $config->allowedauths);
     } else {
         $allowedauths = array();
     }
-    if ($config->allowedwantspages != '') {
+    if (isset($config->allowedwantspages) && $config->allowedwantspages != '') {
         $allowedwantspages = explode(',', $config->allowedwantspages);
     } else {
         $allowedwantspages = array();
