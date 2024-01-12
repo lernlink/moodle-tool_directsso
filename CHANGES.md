@@ -6,6 +6,7 @@ Changes
 
 ### Unreleased
 
+* 2024-01-12 - Add automated release to moodle.org/plugins
 * 2024-01-11 - Make codechecker happy again
 * 2024-01-11 - Updated Moodle Plugin CI to latest upstream recommendations
 * 2024-01-11 - Bugfix: Get rid of two debug messages on fresh installations.
