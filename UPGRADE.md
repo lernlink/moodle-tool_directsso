@@ -145,7 +145,52 @@ Manual tests
 * You are logged into Moodle
 * You are on the Moodle Frontpage
 
-### Test disabled wantspage fallback
+### Test Course wantspage target
+
+* Login as admin
+
+* Go to Site administration -> Server -> OAuth 2 services
+* Add a working OAuth 2 backend
+* Create a course and enrol yourself into the course
+
+* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
+* In the "Allowed authentication plugins" setting, enable "OAuth 2"
+* In the "Allowed wantspage targets" setting, enable "Course"
+* Save the settings
+* Pick the usable URL for the SSO entrypoint and replace the COURSEID placeholder with the ID of the course which you just created 
+
+* Open a new private browser window
+* Make sure that you are logged in with the SSO provider, but not into Moodle
+* Go to the SSO entrypoint URL
+
+#### Expected result:
+
+* You are logged into Moodle
+* You are on the Moodle course
+
+### Test Course wantspage target without course ID
+
+* Login as admin
+
+* Go to Site administration -> Server -> OAuth 2 services
+* Add a working OAuth 2 backend
+
+* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
+* In the "Allowed authentication plugins" setting, enable "OAuth 2"
+* In the "Allowed wantspage targets" setting, enable "Course"
+* Save the settings
+* Pick the usable URL for the SSO entrypoint and remove the courseid parameter from the URL
+
+* Open a new private browser window
+* Make sure that you are logged in with the SSO provider, but not into Moodle
+* Go to the SSO entrypoint URL
+
+#### Expected result:
+
+* You are not logged into Moodle
+* You see an error message which informs you that the required courseid parameter is missing
+
+### Test (non-existing) disabled wantspage fallback
 
 * Login as admin
 
@@ -164,5 +209,7 @@ Manual tests
 * Make sure that you are logged in with the SSO provider, but not into Moodle
 * Go to the SSO entrypoint URL
 
-* You are logged into Moodle
-* You are on the Moodle Dashboard, not on the Moodle frontpage
+#### Expected result:
+
+* You are not logged into Moodle
+* You are on the Moodle login page
