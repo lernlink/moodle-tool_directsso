@@ -4,7 +4,7 @@ moodle-tool_directsso
 Changes
 -------
 
-### Unreleased
+### v3.9-r2
 
 * 2024-01-15 - Improvement: Allow course as Direct Entry SSO target - inspired by Chris Murad.
 * 2024-01-12 - Add automated release to moodle.org/plugins
