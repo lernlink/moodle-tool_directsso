@@ -64,6 +64,7 @@ if ($hassiteconfig) {
         $wantspageoptions = [
                 TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD => get_string('myhome', 'moodle'),
                 TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE => get_string('sitehome', 'core'),
+                TOOL_DIRECTSSO_WANTSPAGE_COURSE => get_string('course', 'core'),
         ];
         $setting = new admin_setting_configmulticheckbox('tool_directsso/allowedwantspages',
                 get_string('setting_allowedwantspages', 'tool_directsso', null, true),

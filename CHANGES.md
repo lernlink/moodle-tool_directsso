@@ -6,6 +6,7 @@ Changes
 
 ### Unreleased
 
+* 2024-01-15 - Improvement: Allow course as Direct Entry SSO target - inspired by Chris Murad.
 * 2024-01-12 - Add automated release to moodle.org/plugins
 * 2024-01-11 - Make codechecker happy again
 * 2024-01-11 - Updated Moodle Plugin CI to latest upstream recommendations

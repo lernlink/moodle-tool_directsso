@@ -76,6 +76,31 @@ switch ($wantspage) {
             redirect($loginpageurl);
         }
 
+        // If the caller requested a redirect to a course.
+    case TOOL_DIRECTSSO_WANTSPAGE_COURSE:
+        // If the admin allowed this wantspage target.
+        if (in_array(TOOL_DIRECTSSO_WANTSPAGE_COURSE, $allowedwantspages)) {
+            // Get optional course ID parameter.
+            $courseid = required_param('courseid', PARAM_INT);
+
+            // If a valid course ID was given.
+            if (!empty($courseid) && $DB->record_exists('course', ['id' => $courseid])) {
+                // Remember wantsurl.
+                $wantsurl = new moodle_url('/course/view.php', ['id' => $courseid]);
+                break;
+
+                // Otherwise.
+            } else {
+                // Redirect to the login page as we can't fulfil the request.
+                redirect($loginpageurl);
+            }
+
+            // Otherwise.
+        } else {
+            // Redirect to the login page as we can't fulfil the request.
+            redirect($loginpageurl);
+        }
+
         // Something unexpected was requested.
     default:
         // Redirect to the login page as we can't fulfil the request.
