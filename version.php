@@ -27,6 +27,6 @@
 $plugin->component = 'tool_directsso';
 $plugin->version = 2023100901;
 $plugin->release = 'v4.3-r2';
-$plugin->requires = 2023100900;
-$plugin->supported = [403, 403];
+$plugin->requires = 2024042200;
+$plugin->supported = [404, 404];
 $plugin->maturity = MATURITY_STABLE;
