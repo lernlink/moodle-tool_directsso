@@ -4,6 +4,10 @@ moodle-tool_directsso
 Changes
 -------
 
+### Unreleased
+
+* 2024-11-23 - Make codechecker happy again
+
 ### v4.3-r1
 
 * 2024-01-15 - Prepare compatibility for Moodle 4.3.
