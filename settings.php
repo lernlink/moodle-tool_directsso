@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-Admin tool "Direct SSO Entrypoint" - Settings
+ * Admin tool "Direct SSO Entrypoint" - Settings
  *
  * @package    tool_directsso
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
