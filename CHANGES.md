@@ -4,7 +4,7 @@ moodle-tool_directsso
 Changes
 -------
 
-### Unreleased
+### v4.4-r1
 
 * 2024-11-23 - Prepare compatibility for Moodle 4.4.
 
