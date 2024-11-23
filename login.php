@@ -37,13 +37,13 @@ $wantspage = required_param('wantspage', PARAM_ALPHA);
 
 // Set up page.
 $PAGE->set_context(context_system::instance());
-$PAGE->set_url(new moodle_url('/admin/tool/directsso/login.php', ['auth' => $auth, 'wantspage' => $wantspage]));
+$PAGE->set_url(new \core\url('/admin/tool/directsso/login.php', ['auth' => $auth, 'wantspage' => $wantspage]));
 
 // Get plugin config.
 $config = get_config('tool_directsso');
 
 // Prepare login page URL as fallback.
-$loginpageurl = new moodle_url('/login/index.php');
+$loginpageurl = new \core\url('/login/index.php');
 
 // Prepare wantsURL based on the submitted wantspage parameter.
 $allowedwantspages = explode(',', $config->allowedwantspages);
@@ -53,7 +53,7 @@ switch ($wantspage) {
         // If the admin allowed this wantspage target.
         if (in_array(TOOL_DIRECTSSO_WANTSPAGE_FRONTPAGE, $allowedwantspages)) {
             // Remember wantsurl.
-            $wantsurl = new moodle_url('/?redirect=0');
+            $wantsurl = new \core\url('/?redirect=0');
             break;
 
             // Otherwise.
@@ -67,7 +67,7 @@ switch ($wantspage) {
         // If the admin allowed this wantspage target.
         if (in_array(TOOL_DIRECTSSO_WANTSPAGE_DASHBOARD, $allowedwantspages)) {
             // Remember wantsurl.
-            $wantsurl = new moodle_url('/my');
+            $wantsurl = new \core\url('/my');
             break;
 
             // Otherwise.
@@ -86,7 +86,7 @@ switch ($wantspage) {
             // If a valid course ID was given.
             if (!empty($courseid) && $DB->record_exists('course', ['id' => $courseid])) {
                 // Remember wantsurl.
-                $wantsurl = new moodle_url('/course/view.php', ['id' => $courseid]);
+                $wantsurl = new \core\url('/course/view.php', ['id' => $courseid]);
                 break;
 
                 // Otherwise.
@@ -116,7 +116,7 @@ switch ($auth) {
         $issuerid = required_param('id', PARAM_INT);
 
         // And the page has one more parameter.
-        $PAGE->set_url(new moodle_url('/admin/tool/directsso/login.php',
+        $PAGE->set_url(new \core\url('/admin/tool/directsso/login.php',
                 ['auth' => $auth, 'id' => $issuerid, 'wantspage' => $wantspage]));
 
         // If the admin allowed this auth method.
@@ -124,7 +124,7 @@ switch ($auth) {
             // Compose the URl, add the sesskey (as OAuth2 expects it together with the wantsurl)
             // and redirect to the OAuth login page.
             $redirectparams = ['wantsurl' => $wantsurl, 'sesskey' => sesskey(), 'id' => $issuerid];
-            $redirecturl = new moodle_url('/auth/oauth2/login.php', $redirectparams);
+            $redirecturl = new \core\url('/auth/oauth2/login.php', $redirectparams);
             redirect($redirecturl);
 
             // Otherwise.

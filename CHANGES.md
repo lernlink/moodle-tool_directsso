@@ -4,6 +4,11 @@ moodle-tool_directsso
 Changes
 -------
 
+### Unreleased
+
+* 2025-01-08 - Upgrade: Adopt changes from MDL-81960 and MDL-82183 and use new classes.
+* 2025-01-08 - Prepare compatibility for Moodle 4.5.
+
 ### v4.4-r2
 
 * 2025-01-06 - Add automated tests with Wiremock.
