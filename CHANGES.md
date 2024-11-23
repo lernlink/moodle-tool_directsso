@@ -4,7 +4,7 @@ moodle-tool_directsso
 Changes
 -------
 
-### Unreleased
+### v4.3-r2
 
 * 2024-11-23 - Make codechecker happy again
 
