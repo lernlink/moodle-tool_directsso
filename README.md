@@ -61,6 +61,18 @@ Security implications
 This tool does not add any new authentication mechanisms to Moodle. It also does not weaken any existing authentication or SSO mechanisms.
 
 
+Capabilities
+------------
+
+This plugin does not add any additional capabilities.
+
+
+Scheduled Tasks
+---------------
+
+This plugin does not add any additional scheduled tasks.
+
+
 Theme support
 -------------
 
