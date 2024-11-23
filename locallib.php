@@ -116,12 +116,12 @@ function tool_directsso_get_usable_urls() {
     }
 
     // Compose the HTML code.
-    $html = html_writer::start_tag('ul');
+    $html = \core\output\html_writer::start_tag('ul');
     foreach ($urls as $u) {
-        $url = new moodle_url('/admin/tool/directsso/login.php', $u);
-        $html .= html_writer::tag('li', html_writer::link($url, $url->out()));
+        $url = new \core\url('/admin/tool/directsso/login.php', $u);
+        $html .= \core\output\html_writer::tag('li', \core\output\html_writer::link($url, $url->out()));
     }
-    $html .= html_writer::end_tag('ul');
+    $html .= \core\output\html_writer::end_tag('ul');
 
     // Return.
     return $html;
