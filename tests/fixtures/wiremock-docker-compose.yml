@@ -1,0 +1,15 @@
+services:
+  wiremock:
+    image: wiremock/wiremock:3.9.2
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./wiremock-mappings:/home/wiremock/mappings
+      - ./wiremock-files:/home/wiremock/__files
+    entrypoint: ["/docker-entrypoint.sh", "--global-response-templating", "--verbose"]
+
+volumes:
+  wiremock-mappings:
+    driver: local
+  wiremock-files:
+    driver: local

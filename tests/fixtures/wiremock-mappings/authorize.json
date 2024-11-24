@@ -1,0 +1,13 @@
+{
+    "request": {
+      "method": "GET",
+      "urlPath": "/oauth/authorize"
+    },
+    "response": {
+      "status": 302,
+      "headers": {
+        "Location": "{{request.query.redirect_uri}}?state={{urlEncode request.query.state}}&code=foo"
+      },
+      "transformers": ["response-template"]
+    }
+  }
