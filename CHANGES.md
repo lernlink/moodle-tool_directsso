@@ -4,6 +4,10 @@ moodle-tool_directsso
 Changes
 -------
 
+### Unreleased
+
+* 2025-01-06 - Add automated tests with Wiremock.
+
 ### v4.1-r2
 
 * 2024-11-23 - Make codechecker happy again

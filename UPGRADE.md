@@ -21,195 +21,22 @@ Upstream changes
 Automated tests
 ---------------
 
-* Due to the fact that the plugin deals with links from external applications to Moodle and with identity backend providers, there aren't any automated test (yet).
+* The plugin has a good coverage with Behat tests which test all of the plugin's user stories.
+* To run the automated tests, a running OAuth2 server is necessary. This is realized in the Github actions workflow with Wiremock. If you want to run the automated tests locally, you have to adapt the tests to a local OAuth2 server yourself.
+If you do not have a running OAuth2 server at hand, you can try to spin up Wiremock which is used in Github actions with this docker-compose command:
+```
+docker-compose -p wiremock -f admin/tool/directsso/tests/fixtures/wiremock-docker-compose.yml up
+```
 
 
 Manual tests
 ------------
 
-### Prerequisites:
+* Even though there are automated tests, as the plugin deals with the communication to a backend system, manual tests should be carried out to see if the plugin's functionality really works with a real OAuth2 server.
+* Additionally, if you look at the Behat feature file, you will see that there are some scenarios still commented out. If you have time, you should test them manually or write a Behat test for it.
 
-* Install the plugin to Moodle
 
-### Test OAuth backend
+Visual checks
+-------------
 
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Dashboard"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are logged into Moodle
-* You are on the Moodle Dashboard
-
-### Test backend disabling
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Dashboard"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint
-* In the "Allowed authentication plugins" setting, disable "OAuth 2"
-* Save the settings again
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are not logged into Moodle
-* You are on the Moodle login page
-
-### Test wantspage disabling
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Dashboard"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint
-* In the "Allowed wantspage targets" setting, disable all options
-* Save the settings again
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are not logged into Moodle
-* You are on the Moodle login page
-
-### Test Dashboard wantspage target
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Dashboard"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are logged into Moodle
-* You are on the Moodle Dashboard
-
-### Test Frontpage wantspage target
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Frontpage"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are logged into Moodle
-* You are on the Moodle Frontpage
-
-### Test Course wantspage target
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-* Create a course and enrol yourself into the course
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Course"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint and replace the COURSEID placeholder with the ID of the course which you just created
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are logged into Moodle
-* You are on the Moodle course
-
-### Test Course wantspage target without course ID
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Course"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint and remove the courseid parameter from the URL
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are not logged into Moodle
-* You see an error message which informs you that the required courseid parameter is missing
-
-### Test (non-existing) disabled wantspage fallback
-
-* Login as admin
-
-* Go to Site administration -> Server -> OAuth 2 services
-* Add a working OAuth 2 backend
-
-* Go to Site administration -> Plugins -> Authentication -> Direct SSO Entrypoint
-* In the "Allowed authentication plugins" setting, enable "OAuth 2"
-* In the "Allowed wantspage targets" setting, enable "Frontpage" and "Dashboard"
-* Save the settings
-* Pick the usable URL for the SSO entrypoint to the frontpage
-* In the "Allowed wantspage targets" setting, disable "Frontpage" but keep "Dashboard" enabled
-* Save the settings again
-
-* Open a new private browser window
-* Make sure that you are logged in with the SSO provider, but not into Moodle
-* Go to the SSO entrypoint URL
-
-#### Expected result:
-
-* You are not logged into Moodle
-* You are on the Moodle login page
+* There aren't any additional visual checks in the Moodle GUI needed to upgrade this plugin.
