@@ -4,7 +4,7 @@ moodle-tool_directsso
 Changes
 -------
 
-### Unreleased
+### v4.4-r2
 
 * 2025-01-06 - Add automated tests with Wiremock.
 
