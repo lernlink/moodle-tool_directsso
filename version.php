@@ -25,8 +25,8 @@
  defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tool_directsso';
-$plugin->version = 2022112801;
-$plugin->release = 'v4.1-r2';
+$plugin->version = 2022112802;
+$plugin->release = 'v4.1-r3';
 $plugin->requires = 2022112800;
 $plugin->supported = [401, 401];
 $plugin->maturity = MATURITY_STABLE;
