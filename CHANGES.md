@@ -6,6 +6,7 @@ Changes
 
 ### Unreleased
 
+* 2025-01-08 - Development: Rename master branch to main, please update your clones.
 * 2025-01-08 - Upgrade: Adopt changes from MDL-81960 and MDL-82183 and use new classes.
 * 2025-01-08 - Prepare compatibility for Moodle 4.5.
 
