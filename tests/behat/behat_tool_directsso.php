@@ -169,7 +169,7 @@ class behat_tool_directsso extends behat_base {
      */
     public function i_open_the_direct_sso_entrypoint_url_oauth2_dashboard() {
         $issuer = $this->get_oauth2_issuer_id();
-        $url = new moodle_url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'dashboard']);
+        $url = new \core\url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'dashboard']);
         $this->execute('behat_general::i_visit', [$url]);
     }
 
@@ -181,7 +181,7 @@ class behat_tool_directsso extends behat_base {
      */
     public function i_open_the_direct_sso_entrypoint_url_oauth2_frontpage() {
         $issuer = $this->get_oauth2_issuer_id();
-        $url = new moodle_url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'frontpage']);
+        $url = new \core\url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'frontpage']);
         $this->execute('behat_general::i_visit', [$url]);
     }
 
@@ -194,7 +194,7 @@ class behat_tool_directsso extends behat_base {
     public function i_open_the_direct_sso_entrypoint_url_oauth2_course() {
         $issuer = $this->get_oauth2_issuer_id();
         $courseid = $this->get_wantspage_course_id();
-        $url = new moodle_url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'course',
+        $url = new \core\url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'course',
                 'courseid' => $courseid]);
         $this->execute('behat_general::i_visit', [$url]);
     }
@@ -207,7 +207,7 @@ class behat_tool_directsso extends behat_base {
      */
     public function i_open_the_direct_sso_entrypoint_url_wrongauth_dashboard() {
         $issuer = $this->get_oauth2_issuer_id();
-        $url = new moodle_url('/admin/tool/directsso/login.php', ['auth' => 'wrong', 'id' => $issuer, 'wantspage' => 'dashboard']);
+        $url = new \core\url('/admin/tool/directsso/login.php', ['auth' => 'wrong', 'id' => $issuer, 'wantspage' => 'dashboard']);
         $this->execute('behat_general::i_visit', [$url]);
     }
 
@@ -220,7 +220,7 @@ class behat_tool_directsso extends behat_base {
     public function i_open_the_direct_sso_entrypoint_url_oauth2_wrongcourse() {
         $issuer = $this->get_oauth2_issuer_id();
         $courseid = $this->get_wantspage_course_id();
-        $url = new moodle_url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'course',
+        $url = new \core\url('/admin/tool/directsso/login.php', ['auth' => 'oauth2', 'id' => $issuer, 'wantspage' => 'course',
                 'courseid' => $courseid + 100]);
         $this->execute('behat_general::i_visit', [$url]);
     }
