@@ -4,7 +4,7 @@ moodle-tool_directsso
 Changes
 -------
 
-### Unreleased
+### v4.5-r2
 
 * 2025-01-08 - Upgrade: Adopt changes from MDL-81960 and MDL-82183 in automated tests as well.
 
