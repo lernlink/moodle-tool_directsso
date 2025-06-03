@@ -9,7 +9,7 @@ Moodle admin tool which provides an entrypoint that can be used as persistent UR
 Requirements
 ------------
 
-This plugin requires Moodle 4.5+
+This plugin requires Moodle 5.0+
 
 
 Motivation for this plugin
