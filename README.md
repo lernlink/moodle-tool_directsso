@@ -1,7 +1,7 @@
 moodle-tool_directsso
 =====================
 
-[![Moodle Plugin CI](https://github.com/lernlink/moodle-tool_directsso/actions/workflows/moodle-plugin-ci.yml/badge.svg?branch=main)](https://github.com/lernlink/moodle-tool_directsso/actions?query=workflow%3A%22Moodle+Plugin+CI%22+branch%3Amain)
+[![Moodle Plugin CI](https://github.com/lernlink/moodle-tool_directsso/actions/workflows/moodle-plugin-ci.yml/badge.svg?branch=MOODLE_501_STABLE)](https://github.com/lernlink/moodle-tool_directsso/actions?query=workflow%3A%22Moodle+Plugin+CI%22+branch%3AMOODLE_501_STABLE)
 
 Moodle admin tool which provides an entrypoint that can be used as persistent URL where external websites can redirect users directly to the Moodle SSO mechanisms without ever showing the login page to the user and especially without the need that the user clicks on a SSO button on the login page.
 
