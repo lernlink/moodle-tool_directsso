@@ -29,7 +29,7 @@ require_once('../../../config.php');
 // @codingStandardsIgnoreEnd
 
 // Require local library.
-require_once($CFG->dirroot.'/admin/tool/directsso/locallib.php');
+require_once($CFG->dirroot . '/admin/tool/directsso/locallib.php');
 
 // Required parameters.
 $auth = required_param('auth', PARAM_AUTH);
@@ -116,8 +116,10 @@ switch ($auth) {
         $issuerid = required_param('id', PARAM_INT);
 
         // And the page has one more parameter.
-        $PAGE->set_url(new \core\url('/admin/tool/directsso/login.php',
-                ['auth' => $auth, 'id' => $issuerid, 'wantspage' => $wantspage]));
+        $PAGE->set_url(new \core\url(
+            '/admin/tool/directsso/login.php',
+            ['auth' => $auth, 'id' => $issuerid, 'wantspage' => $wantspage]
+        ));
 
         // If the admin allowed this auth method.
         if (in_array('oauth2', $allowedauths)) {
