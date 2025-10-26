@@ -4,6 +4,10 @@ moodle-tool_directsso
 Changes
 -------
 
+### Unreleased
+
+* 2025-10-26 - Tests: Switch Github actions workflows to reusable workflows by Moodle an Hochschulen e.V.
+
 ### v4.5-r2
 
 * 2025-01-08 - Upgrade: Adopt changes from MDL-81960 and MDL-82183 in automated tests as well.
