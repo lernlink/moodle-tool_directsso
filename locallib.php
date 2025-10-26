@@ -107,7 +107,7 @@ function tool_directsso_get_usable_urls() {
         }
 
         // Unset the reference on the last element - see https://www.php.net/manual/en/control-structures.foreach.php.
-        unset ($u);
+        unset($u);
     }
 
     // If there wasn't any URL found, return directly.
