@@ -4,6 +4,10 @@ moodle-tool_directsso
 Changes
 -------
 
+### Unreleased
+
+* 2025-10-26 - Tests: Switch Github actions workflows to reusable workflows by Moodle an Hochschulen e.V.
+
 ### v5.0-r1
 
 * 2025-04-14 - Prepare compatibility for Moodle 5.0.
