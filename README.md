@@ -150,12 +150,22 @@ If you want to use this plugin with a RTL language and it doesn't work as-is, yo
 Maintainers
 -----------
 
-lern.link GmbH\
-Alexander Bias
+The plugin is maintained by\
+lern.link GmbH
 
 
 Copyright
 ---------
 
-lern.link GmbH\
-Alexander Bias
+The copyright of this plugin is held by\
+lern.link GmbH
+
+Individual copyrights of individual developers are tracked in PHPDoc comments and Git commits.
+
+
+Initial copyright
+----------------
+
+This plugin was initially built by\
+Alexander Bias\
+lern.link GmbH
